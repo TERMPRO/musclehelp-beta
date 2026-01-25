@@ -1,69 +1,92 @@
-/* Le bouton fixe en bas à droite */
+/* 1. LE BOUTON "ME CONTACTER" (Flottant en bas à droite) */
 .btn-contact {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     padding: 15px 25px;
-    background-color: #ff4500; /* Orange sport */
-    color: white;
+    background-color: #ff4500; /* Orange vif */
+    color: #ffffff;
     border: none;
     border-radius: 50px;
-    cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+    z-index: 999; /* Pour rester au-dessus du site */
+    transition: transform 0.2s;
 }
 
-/* Fond de la modale (caché par défaut) */
+.btn-contact:hover {
+    transform: scale(1.1); /* Petit effet de zoom au survol */
+}
+
+/* 2. LE FOND NOIR TRANSPARENT */
 .modal {
-    display: none; 
+    display: none; /* Caché par défaut */
     position: fixed;
-    z-index: 1000;
+    z-index: 2000; /* Très haut pour être au-dessus de TOUT */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8); /* Fond noir transparent */
+    background-color: rgba(0, 0, 0, 0.85); /* Noir bien opaque */
+    backdrop-filter: blur(5px); /* Effet de flou sur le reste du site */
 }
 
-/* Boîte de dialogue au centre */
+/* 3. LA BOÎTE BLANCHE (LE FORMULAIRE) */
 .modal-content {
-    background-color: #222;
-    color: white;
+    background-color: #1a1a1a; /* Fond gris très foncé */
     margin: 10% auto;
     padding: 30px;
+    border: 2px solid #ff4500; /* Bordure orange */
     width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
+    max-width: 450px;
+    border-radius: 15px;
     position: relative;
-    border: 1px solid #444;
+    color: white;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-/* Bouton fermer (X) */
+/* 4. LE BOUTON FERMER (X) */
 .close-btn {
     position: absolute;
     right: 20px;
     top: 10px;
+    color: #aaa;
     font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-/* Style du formulaire */
-#contactForm input, #contactForm textarea {
+.close-btn:hover {
+    color: #ff4500;
+}
+
+/* 5. LE STYLE DES CHAMPS DE SAISIE */
+#contactForm h2 {
+    margin-top: 0;
+    color: #ff4500;
+}
+
+#contactForm input, 
+#contactForm textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
-    background: #333;
-    border: 1px solid #555;
+    border: 1px solid #333;
+    background: #2a2a2a;
     color: white;
     border-radius: 5px;
+    box-sizing: border-box; /* Évite que ça dépasse */
 }
 
 .btn-submit {
     width: 100%;
-    padding: 10px;
-    background: #ff4500;
-    border: none;
+    padding: 15px;
+    background-color: #ff4500;
     color: white;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
