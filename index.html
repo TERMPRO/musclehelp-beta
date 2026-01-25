@@ -301,24 +301,20 @@
 
     <button id="btnContact" class="btn-contact">Me contacter</button>
 
-    <div id="modalContact" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Contacte ton coach</h2>
-            <p>Laisse un message pour ton programme personnalisé.</p>
-            
-            <form id="contactForm" name="contact-muscu" method="POST" data-netlify="true">
-    <input type="text" name="nom" placeholder="Ton nom" required>
-    <input type="email" name="email" placeholder="Ton email" required>
-    <textarea name="message" placeholder="Ton objectif..." rows="4" required></textarea>
-    <button type="submit" class="btn-submit">ENVOYER</button>
-</form>>
-                <input type="text" name="name" placeholder="Ton nom" required>
-                <input type="email" name="email" placeholder="Ton email" required>
-                <textarea name="message" placeholder="Ton objectif (Prise de masse, perte de poids...)" rows="4" required></textarea>
-                <button type="submit" class="btn-submit">ENVOYER</button>
-            </form>
-        </div>
-    </div>
+   <div id="modalContact" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Contacte ton coach</h2>
+        <p>Laisse un message pour ton programme personnalisé.</p>
+        
+        <form id="contactForm" name="contact-muscu" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact-muscu">
 
-    <script src="script.js"></script>
+            <input type="text" name="nom" placeholder="Ton nom" required>
+            <input type="email" name="email" placeholder="Ton email" required>
+            <textarea name="message" placeholder="Ton objectif (Prise de masse, perte de poids...)" rows="4" required></textarea>
+            
+            <button type="submit" class="btn-submit">ENVOYER</button>
+        </form>
+    </div>
+</div>
