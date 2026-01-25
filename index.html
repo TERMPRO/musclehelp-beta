@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coach Muscu - Design Pro</title>
+    <title>Coach Muscu - Anatomie Complète</title>
     <style>
         :root {
-            --primary: #3498db; /* Bleu moderne */
+            --primary: #3498db;
             --secondary: #2c3e50;
             --muscle-base: #ecf0f1;
             --muscle-hover: #e74c3c;
@@ -23,116 +23,167 @@
             margin: 0;
         }
 
-        h1 { color: var(--secondary); margin-bottom: 10px; }
+        /* --- SIDEBAR --- */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: var(--secondary);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        }
 
+        .sidebar-section {
+            color: var(--primary);
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 15px 20px 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #bdc3c7;
+            display: block;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            color: white;
+            background: #34495e;
+            padding-left: 25px;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px !important;
+            color: white !important;
+        }
+
+        .open-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 999;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* --- LAYOUT --- */
         .main-container {
             display: flex;
             gap: 40px;
-            max-width: 1000px;
+            max-width: 1100px;
             width: 100%;
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            align-items: flex-start;
+            margin-top: 20px;
         }
 
-        /* --- ZONE SVG --- */
         .svg-wrapper {
             flex: 1;
-            display: flex;
-            justify-content: center;
+            text-align: center;
             background: #f8f9fa;
             border-radius: 15px;
             padding: 20px;
         }
 
-        svg {
-            height: 500px;
-            width: auto;
-            overflow: visible; /* Important pour les effets */
-        }
+        svg { height: 550px; width: auto; }
 
-        /* Style des muscles */
         .muscle {
             fill: var(--muscle-base);
             stroke: #bdc3c7;
-            stroke-width: 1.5;
+            stroke-width: 1.2;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
-        .muscle:hover {
-            fill: var(--muscle-hover);
-            transform: scale(1.01);
-            filter: drop-shadow(0 0 5px rgba(231, 76, 60, 0.4));
-        }
-
+        .muscle:hover { fill: var(--muscle-hover); }
         .muscle.active {
             fill: var(--primary);
-            stroke: var(--secondary);
-            filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));
+            filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.5));
         }
 
-        /* --- ZONE INFOS --- */
-        .info-panel {
-            flex: 1;
-        }
-
-        .info-header {
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        #muscle-title {
-            color: var(--primary);
-            text-transform: uppercase;
-            font-size: 2em;
-            margin: 0;
-        }
-
+        .info-panel { flex: 1; min-width: 300px; }
+        #muscle-title { color: var(--secondary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; margin-top: 0; }
         .exercise-item {
-            background: white;
-            border: 1px solid #eee;
+            background: #f9f9f9;
             border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
         }
 
-        .intro-text {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-        
         .toggle-btn {
             margin-bottom: 20px;
-            padding: 8px 16px;
-            background: var(--secondary);
+            padding: 12px 25px;
+            background: var(--primary);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
         }
-        .toggle-btn:hover { opacity: 0.9; }
+        .toggle-btn:hover { transform: scale(1.05); background: #2980b9; }
 
     </style>
 </head>
 <body>
 
-    <h1>Anatomie Interactive</h1>
-    <button class="toggle-btn" onclick="toggleView()">Changer Vue (Face / Dos)</button>
+    <button class="open-btn" onclick="openNav()">☰ TOUS LES MUSCLES</button>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        
+        <div class="sidebar-section">Vue de Face</div>
+        <a onclick="selectMuscle('trapezes')">Trapèzes (Sup)</a>
+        <a onclick="selectMuscle('deltoides')">Épaules (Avant/Lat)</a>
+        <a onclick="selectMuscle('pecs')">Pectoraux</a>
+        <a onclick="selectMuscle('biceps')">Biceps</a>
+        <a onclick="selectMuscle('avantbras')">Avant-Bras</a>
+        <a onclick="selectMuscle('abdos')">Abdominaux</a>
+        <a onclick="selectMuscle('obliques')">Obliques</a>
+        <a onclick="selectMuscle('quadriceps')">Quadriceps</a>
+        <a onclick="selectMuscle('mollets')">Mollets (Face)</a>
+
+        <div class="sidebar-section">Vue de Dos</div>
+        <a onclick="selectMuscle('dos-trapezes')">Trapèzes (Milieu/Bas)</a>
+        <a onclick="selectMuscle('deltoides-arr')">Épaules (Arrière)</a>
+        <a onclick="selectMuscle('dorsaux')">Grand Dorsal</a>
+        <a onclick="selectMuscle('triceps')">Triceps</a>
+        <a onclick="selectMuscle('fessiers')">Fessiers</a>
+        <a onclick="selectMuscle('ischios')">Ischio-Jambiers</a>
+        <a onclick="selectMuscle('mollets-dos')">Mollets (Arrière)</a>
+    </div>
+
+    <h1>Coaching Anatomique</h1>
+    <button class="toggle-btn" onclick="toggleView()">⇌ Changer de vue (Face/Dos)</button>
 
     <div class="main-container">
-        
         <div class="svg-wrapper">
             <svg id="front-view" viewBox="0 0 200 400">
                 <g transform="translate(100, 0)">
-                    
-                    <circle cx="0" cy="30" r="20" fill="#bdc3c7" stroke="none"/>
-
+                    <circle cx="0" cy="30" r="20" fill="#bdc3c7"/>
                     <g id="right-side">
                         <path id="trapezes" class="muscle" d="M0,50 L25,55 L40,65 L15,50 Z" />
                         <path id="pecs" class="muscle" d="M0,65 L40,65 Q45,90 30,95 L0,95 Z" />
@@ -144,27 +195,13 @@
                         <path id="quadriceps" class="muscle" d="M0,140 L40,130 Q45,200 35,230 L5,230 L0,160 Z" />
                         <path id="mollets" class="muscle" d="M5,230 L35,230 Q40,270 25,300 L10,300 Z" />
                     </g>
-
-                    <g transform="scale(-1, 1)">
-                        <use href="#right-side" /> 
-                        <path id="trapezes" class="muscle" d="M0,50 L25,55 L40,65 L15,50 Z" />
-                        <path id="pecs" class="muscle" d="M0,65 L40,65 Q45,90 30,95 L0,95 Z" />
-                        <path id="deltoides" class="muscle" d="M40,60 Q55,60 60,80 Q55,100 45,90 Z" />
-                        <path id="biceps" class="muscle" d="M45,90 Q58,110 55,125 L40,120 Z" />
-                        <path id="avantbras" class="muscle" d="M40,120 L55,125 L50,160 L38,150 Z" />
-                        <path id="abdos" class="muscle" d="M0,95 L30,95 L25,140 L0,140 Z" />
-                        <path id="obliques" class="muscle" d="M30,95 L40,90 L40,130 L25,140 Z" />
-                        <path id="quadriceps" class="muscle" d="M0,140 L40,130 Q45,200 35,230 L5,230 L0,160 Z" />
-                        <path id="mollets" class="muscle" d="M5,230 L35,230 Q40,270 25,300 L10,300 Z" />
-                    </g>
-
+                    <g transform="scale(-1, 1)"><use href="#right-side" /></g>
                 </g>
             </svg>
 
             <svg id="back-view" viewBox="0 0 200 400" style="display:none;">
                 <g transform="translate(100, 0)">
-                    <circle cx="0" cy="30" r="20" fill="#bdc3c7" stroke="none"/>
-                    
+                    <circle cx="0" cy="30" r="20" fill="#bdc3c7"/>
                     <g id="back-right">
                         <path id="dos-trapezes" class="muscle" d="M0,50 L40,65 L15,100 L0,90 Z" />
                         <path id="dorsaux" class="muscle" d="M15,100 L45,90 L40,130 L0,140 Z" />
@@ -174,79 +211,72 @@
                         <path id="ischios" class="muscle" d="M0,170 L35,170 Q40,230 5,230 L0,230 Z" />
                         <path id="mollets-dos" class="muscle" d="M5,230 L35,230 Q40,270 25,300 L10,300 Z" />
                     </g>
-
-                    <g transform="scale(-1, 1)">
-                        <path id="dos-trapezes" class="muscle" d="M0,50 L40,65 L15,100 L0,90 Z" />
-                        <path id="dorsaux" class="muscle" d="M15,100 L45,90 L40,130 L0,140 Z" />
-                        <path id="deltoides-arr" class="muscle" d="M40,65 L60,80 L45,95 Z" />
-                        <path id="triceps" class="muscle" d="M45,95 L55,125 L40,120 Z" />
-                        <path id="fessiers" class="muscle" d="M0,140 L40,130 Q45,160 35,170 L0,170 Z" />
-                        <path id="ischios" class="muscle" d="M0,170 L35,170 Q40,230 5,230 L0,230 Z" />
-                        <path id="mollets-dos" class="muscle" d="M5,230 L35,230 Q40,270 25,300 L10,300 Z" />
-                    </g>
+                    <g transform="scale(-1, 1)"><use href="#back-right" /></g>
                 </g>
             </svg>
         </div>
 
         <div class="info-panel">
-            <div class="info-header">
-                <h2 id="muscle-title">Sélectionnez un muscle</h2>
-            </div>
+            <h2 id="muscle-title">Sélectionnez une zone</h2>
             <div id="exercises-container">
-                <p class="intro-text">Cliquez sur une partie du corps pour voir les exercices recommandés.</p>
+                <p>Cliquez sur le schéma ou utilisez le menu à gauche.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // --- DONNÉES ---
         const db = {
-            "pecs": { title: "Pectoraux", exs: ["Développé couché", "Écartés poulie", "Pompes"] },
-            "abdos": { title: "Abdominaux", exs: ["Crunch", "Planche (Gainage)", "Relevé de jambes"] },
-            "obliques": { title: "Obliques", exs: ["Rotation russe", "Gainage latéral"] },
-            "deltoides": { title: "Épaules (Avant)", exs: ["Développé Militaire", "Élévations latérales"] },
-            "biceps": { title: "Biceps", exs: ["Curl Barre", "Curl Marteau", "Tractions supination"] },
-            "avantbras": { title: "Avant-Bras", exs: ["Flexions poignets", "Suspension à la barre"] },
-            "quadriceps": { title: "Quadriceps", exs: ["Squat", "Presse à cuisses", "Leg Extension"] },
-            "trapezes": { title: "Trapèzes", exs: ["Shrugs", "Face Pull"] },
-            "mollets": { title: "Mollets", exs: ["Extensions debout", "Extensions assis"] },
+            // FACE
+            "trapezes": { title: "Trapèzes (Supérieurs)", exs: ["Shrugs", "Tirage menton"], view: "front" },
+            "pecs": { title: "Pectoraux", exs: ["Développé couché", "Écartés haltères", "Pompes"], view: "front" },
+            "deltoides": { title: "Épaules (Avant/Lat)", exs: ["Développé militaire", "Élévations latérales"], view: "front" },
+            "biceps": { title: "Biceps", exs: ["Curl haltères", "Curl Larry Scott"], view: "front" },
+            "avantbras": { title: "Avant-Bras", exs: ["Flexion poignets", "Marche du fermier"], view: "front" },
+            "abdos": { title: "Abdominaux", exs: ["Crunchs", "Relevé de jambes", "Gainage"], view: "front" },
+            "obliques": { title: "Obliques", exs: ["Russian Twist", "Flexion latérale"], view: "front" },
+            "quadriceps": { title: "Quadriceps", exs: ["Squat", "Leg Extension", "Fentes"], view: "front" },
+            "mollets": { title: "Mollets", exs: ["Extensions debout", "Presse à mollets"], view: "front" },
             
-            // Dos
-            "dorsaux": { title: "Grand Dorsal", exs: ["Tractions pronation", "Tirage vertical", "Rowing barre"] },
-            "dos-trapezes": { title: "Trapèzes (Milieu/Bas)", exs: ["Rowing menton", "Oiseau buste penché"] },
-            "deltoides-arr": { title: "Arrière d'épaule", exs: ["Oiseau", "Face Pull"] },
-            "triceps": { title: "Triceps", exs: ["Dips", "Barre au front", "Extension poulie"] },
-            "fessiers": { title: "Fessiers", exs: ["Hip Thrust", "Fentes arrières", "Squat sumo"] },
-            "ischios": { title: "Ischio-Jambiers", exs: ["Soulevé de terre Roumain", "Leg Curl"] },
-            "mollets-dos": { title: "Mollets", exs: ["Extensions debout", "Corde à sauter"] }
+            // DOS
+            "dos-trapezes": { title: "Trapèzes (Milieu/Bas)", exs: ["Rowing barre", "Oiseau haltères"], view: "back" },
+            "dorsaux": { title: "Grand Dorsal", exs: ["Tractions", "Tirage bûcheron", "Pull-over"], view: "back" },
+            "deltoides-arr": { title: "Épaules (Arrière)", exs: ["Facepull", "Oiseau poulie"], view: "back" },
+            "triceps": { title: "Triceps", exs: ["Dips", "Barre au front", "Extensions poulie"], view: "back" },
+            "fessiers": { title: "Fessiers", exs: ["Hip Thrust", "Squat bulgare"], view: "back" },
+            "ischios": { title: "Ischio-Jambiers", exs: ["Leg Curl", "Soulevé de terre roumain"], view: "back" },
+            "mollets-dos": { title: "Mollets (Arrière)", exs: ["Extensions assis", "Corde à sauter"], view: "back" }
         };
 
-        // --- LOGIQUE ---
-        const muscles = document.querySelectorAll('.muscle');
-        const titleDisplay = document.getElementById('muscle-title');
-        const exContainer = document.getElementById('exercises-container');
+        function openNav() { document.getElementById("mySidebar").style.width = "260px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
 
-        muscles.forEach(muscle => {
+        function selectMuscle(id) {
+            const data = db[id];
+            if (!data) return;
+
+            const currentView = document.getElementById('front-view').style.display === 'none' ? 'back' : 'front';
+            if (data.view !== currentView) toggleView();
+            
+            // On attend un court instant que la vue change si besoin avant de simuler le clic
+            setTimeout(() => {
+                const target = document.getElementById(id);
+                if (target) target.dispatchEvent(new Event('click'));
+            }, 50);
+            
+            if (window.innerWidth < 768) closeNav();
+        }
+
+        document.querySelectorAll('.muscle').forEach(muscle => {
             muscle.addEventListener('click', function() {
-                // 1. Gestion visuelle (Active class)
-                muscles.forEach(m => m.classList.remove('active'));
-                
-                // On active TOUS les muscles qui ont le même ID (pour gérer gauche/droite en même temps)
-                const allSimiliarMuscles = document.querySelectorAll(`#${this.id}`);
-                allSimiliarMuscles.forEach(m => m.classList.add('active'));
+                document.querySelectorAll('.muscle').forEach(m => m.classList.remove('active'));
+                document.querySelectorAll(`#${this.id}`).forEach(m => m.classList.add('active'));
 
-                // 2. Affichage données
-                const key = this.id;
-                const data = db[key];
-
-                if(data) {
-                    titleDisplay.textContent = data.title;
-                    exContainer.innerHTML = data.exs.map(ex => 
+                const data = db[this.id];
+                if (data) {
+                    document.getElementById('muscle-title').textContent = data.title;
+                    document.getElementById('exercises-container').innerHTML = data.exs.map(ex => 
                         `<div class="exercise-item"><strong>${ex}</strong></div>`
                     ).join('');
-                } else {
-                    titleDisplay.textContent = "Inconnu";
-                    exContainer.innerHTML = "<p>Pas de données pour cette zone.</p>";
                 }
             });
         });
@@ -254,13 +284,9 @@
         function toggleView() {
             const front = document.getElementById('front-view');
             const back = document.getElementById('back-view');
-            if(front.style.display === 'none') {
-                front.style.display = 'block';
-                back.style.display = 'none';
-            } else {
-                front.style.display = 'none';
-                back.style.display = 'block';
-            }
+            const isFront = front.style.display !== 'none';
+            front.style.display = isFront ? 'none' : 'block';
+            back.style.display = isFront ? 'block' : 'none';
         }
     </script>
 </body>
