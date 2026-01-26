@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach Muscu - Anatomie Complète</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4914176983390397"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4914176983390397" crossorigin="anonymous"></script>
 
     <style>
         :root {
@@ -27,174 +26,83 @@
             margin: 0;
         }
 
-        /* --- STYLE DU BOUTON PROGRAMMES --- */
+        /* BOUTON PROGRAMMES */
         .btn-programmes {
             position: fixed;
             top: 20px;
             right: 20px;
             background-color: #000000;
             color: #ffffff;
-            padding: 12px 24px;
+            padding: 10px 20px;
             font-family: 'Arial', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
             text-decoration: none;
             border: 2px solid #ffffff;
             border-radius: 5px;
-            z-index: 2000;
-            transition: all 0.3s ease;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .btn-programmes:hover {
-            background-color: #ffffff;
-            color: #000000;
-            border: 2px solid #000000;
-        }
-
-        /* --- SIDEBAR --- */
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            background-color: var(--secondary);
-            overflow-x: hidden;
+            z-index: 2001;
             transition: 0.3s;
-            padding-top: 60px;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+            font-size: 14px;
         }
 
-        .sidebar-section {
-            color: var(--primary);
-            font-size: 0.8em;
-            font-weight: bold;
-            padding: 15px 20px 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn-programmes:hover { background: #ffffff; color: #000; border: 2px solid #000; }
+
+        /* SIDEBAR */
+        .sidebar {
+            height: 100%; width: 0; position: fixed; z-index: 3000;
+            top: 0; left: 0; background-color: var(--secondary);
+            overflow-x: hidden; transition: 0.3s; padding-top: 60px;
         }
 
         .sidebar a {
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 15px;
-            color: #bdc3c7;
-            display: block;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .sidebar a:hover {
-            color: white;
-            background: #34495e;
-            padding-left: 25px;
-        }
-
-        .closebtn {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px !important;
-            color: white !important;
+            padding: 10px 20px; text-decoration: none; font-size: 18px;
+            color: #bdc3c7; display: block; transition: 0.2s; cursor: pointer;
         }
 
         .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 18px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 999;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: fixed; top: 20px; left: 20px;
+            background: var(--secondary); color: white;
+            padding: 10px 15px; border: none; border-radius: 8px;
+            cursor: pointer; z-index: 2000; font-weight: bold;
         }
 
-        /* --- LAYOUT --- */
+        /* LAYOUT */
         .main-container {
-            display: flex;
-            gap: 40px;
-            max-width: 1100px;
-            width: 100%;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-top: 20px;
+            display: flex; gap: 20px; max-width: 1100px; width: 100%;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 80px;
         }
 
-        .svg-wrapper {
-            flex: 1;
-            text-align: center;
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 20px;
-        }
-
-        svg { height: 550px; width: auto; }
-
-        .muscle {
-            fill: var(--muscle-base);
-            stroke: #bdc3c7;
-            stroke-width: 1.2;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
+        .svg-wrapper { flex: 1; text-align: center; background: #f8f9fa; border-radius: 15px; }
+        svg { height: 500px; width: auto; }
+        .muscle { fill: var(--muscle-base); stroke: #bdc3c7; stroke-width: 1.2; cursor: pointer; transition: 0.2s; }
         .muscle:hover { fill: var(--muscle-hover); }
-        .muscle.active {
-            fill: var(--primary);
-            filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.5));
-        }
+        .muscle.active { fill: var(--primary); }
 
-        .info-panel { flex: 1; min-width: 300px; }
-        #muscle-title { color: var(--secondary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; margin-top: 0; }
-        .exercise-item {
-            background: #f9f9f9;
-            border-left: 4px solid var(--primary);
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-        }
+        .info-panel { flex: 1; min-width: 250px; padding: 10px; }
 
-        .toggle-btn {
-            margin-bottom: 20px;
-            padding: 12px 25px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
+        @media (max-width: 768px) {
+            .main-container { flex-direction: column; margin-top: 120px; }
+            .btn-programmes { top: 70px; right: 20px; } /* Evite la superposition sur mobile */
         }
-        .toggle-btn:hover { transform: scale(1.05); background: #2980b9; }
-
-        /* Style de la modale contact */
-        .modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-        .modal-content { background: white; margin: 10% auto; padding: 20px; width: 300px; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <a href="Programmes.html" class="btn-programmes">Programmes PDC</a>
 
-    <button class="open-btn" onclick="openNav()">☰ TOUS LES MUSCLES</button>
+    <button class="open-btn" onclick="openNav()">☰ MENU</button>
 
     <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <div class="sidebar-section">Vue de Face</div>
-        <a onclick="selectMuscle('trapezes')">Trapèzes (Sup)</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size:30px; position:absolute; top:10px; right:20px;">×</a>
+        <div style="color:var(--primary); padding:20px; font-weight:bold;">MUSCLES</div>
+        <a onclick="selectMuscle('trapezes')">Trapèzes</a>
         <a onclick="selectMuscle('pecs')">Pectoraux</a>
-        </div>
+    </div>
 
     <h1>Coaching Anatomique</h1>
-    <button class="toggle-btn" onclick="toggleView()">⇌ Changer de vue (Face/Dos)</button>
+    <button class="toggle-btn" style="padding:10px 20px; border-radius:20px; cursor:pointer;" onclick="toggleView()">⇌ Changer de vue</button>
 
     <div class="main-container">
         <div class="svg-wrapper">
@@ -204,7 +112,7 @@
                     <g id="right-side">
                         <path id="trapezes" class="muscle" d="M0,50 L25,55 L40,65 L15,50 Z" />
                         <path id="pecs" class="muscle" d="M0,65 L40,65 Q45,90 30,95 L0,95 Z" />
-                        </g>
+                    </g>
                     <g transform="scale(-1, 1)"><use href="#right-side" /></g>
                 </g>
             </svg>
@@ -213,21 +121,35 @@
         <div class="info-panel">
             <h2 id="muscle-title">Sélectionnez une zone</h2>
             <div id="exercises-container">
-                <p>Cliquez sur le schéma.</p>
+                <p>Cliquez sur le schéma pour voir les exercices.</p>
             </div>
         </div>
     </div>
 
     <script>
-        function openNav() { document.getElementById("mySidebar").style.width = "260px"; }
-        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-        function toggleView() {
-            const front = document.getElementById('front-view');
-            const isFront = front.style.display !== 'none';
-            front.style.display = isFront ? 'none' : 'block';
-        }
-        // ... reste de ta logique JS ...
-    </script>
+        // La base de données est ESSENTIELLE pour que le clic fonctionne
+        const db = {
+            "trapezes": { title: "Trapèzes", exs: ["Shrugs", "Tirage menton"] },
+            "pecs": { title: "Pectoraux", exs: ["Développé couché", "Pompes"] }
+        };
 
+        function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
+        document.querySelectorAll('.muscle').forEach(m => {
+            m.addEventListener('click', function() {
+                const data = db[this.id];
+                if(data) {
+                    document.getElementById('muscle-title').innerText = data.title;
+                    document.getElementById('exercises-container').innerHTML = data.exs.map(e => `<li>${e}</li>`).join('');
+                }
+            });
+        });
+
+        function toggleView() {
+            const f = document.getElementById('front-view');
+            f.style.display = (f.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
