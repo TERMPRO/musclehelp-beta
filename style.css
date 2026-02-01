@@ -1,3 +1,5 @@
+/* --- Tes styles existants (Contact & Programmes) --- */
+
 /* Le bouton fixe en bas à droite */
 .btn-contact {
     position: fixed;
@@ -11,13 +13,14 @@
     cursor: pointer;
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
 }
 
 /* Fond de la modale (caché par défaut) */
 .modal {
     display: none; 
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
@@ -68,6 +71,7 @@
     cursor: pointer;
     margin-top: 10px;
 }
+
 /* Style du bouton flottant en haut à droite */
 .btn-programmes {
     position: fixed; 
@@ -81,19 +85,59 @@
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    border: 2px solid #ffffff; /* Bordure blanche pour détacher du fond si besoin */
+    border: 2px solid #ffffff; 
     border-radius: 4px;
-    z-index: 9999; /* Pour qu'il soit toujours au-dessus */
+    z-index: 9999; 
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
     display: inline-block;
 }
 
-/* Effet quand on passe la souris dessus */
 .btn-programmes:hover {
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #000000;
-    transform: translateY(-2px); /* Petit saut vers le haut */
+    transform: translateY(-2px); 
     box-shadow: 0px 6px 15px rgba(0,0,0,0.6);
+}
+
+/* --- AJOUT : Nouvelle Rubrique Description (Footer) --- */
+
+.site-footer {
+    width: 100%;
+    max-width: 1100px;
+    margin: 60px auto 100px auto; /* Marge pour ne pas coller au bouton contact */
+    padding: 40px 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.footer-date {
+    display: inline-block;
+    background: #2c3e50;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer-description {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.05em;
+    margin-bottom: 20px;
+}
+
+.footer-contact-text {
+    color: #ff4500; /* Rappel de la couleur du bouton contact */
+    font-weight: bold;
+    font-size: 0.95em;
 }
