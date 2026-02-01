@@ -23,14 +23,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 0;
             margin: 0;
             min-height: 100vh;
         }
 
         /* --- NAVIGATION --- */
         .sidebar {
-            height: 100%; width: 0; position: fixed; z-index: 1000;
+            height: 100%; width: 0; position: fixed; z-index: 2000;
             top: 0; left: 0; background-color: var(--secondary);
             overflow-x: hidden; transition: 0.3s; padding-top: 60px;
             box-shadow: 2px 0 10px rgba(0,0,0,0.2);
@@ -79,15 +79,15 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* --- LAYOUT --- */
+        /* --- CONTENU --- */
         .main-container {
-            display: flex; gap: 40px; max-width: 1100px; width: 100%;
+            display: flex; gap: 40px; max-width: 1100px; width: 90%;
             background: white; padding: 40px; border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin: 20px 0;
         }
 
         .svg-wrapper { flex: 1; text-align: center; background: #f8f9fa; border-radius: 15px; padding: 20px; }
-        svg { height: 550px; width: auto; }
+        svg { height: 500px; width: auto; }
 
         .muscle { fill: var(--muscle-base); stroke: #bdc3c7; stroke-width: 1.2; cursor: pointer; transition: all 0.2s; }
         .muscle:hover { fill: var(--muscle-hover); }
@@ -97,41 +97,70 @@
         #muscle-title { color: var(--secondary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
         .exercise-item { background: #f9f9f9; border-left: 4px solid var(--primary); padding: 12px; margin-bottom: 10px; border-radius: 4px; }
 
-        /* --- FOOTER & DESCRIPTION --- */
+        /* --- FOOTER "LUXE" (INSPIRÉ IMAGE) --- */
         .site-footer {
-            width: 100%; max-width: 1100px; margin: 60px 0 100px 0;
-            padding: 40px 20px; border-top: 2px solid #eee; text-align: center;
+            width: 100%; background-color: #000; color: #fff;
+            padding: 80px 0 30px 0; margin-top: 60px;
         }
-        .footer-date {
-            display: inline-block; background: var(--secondary); color: #fff;
-            padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin-bottom: 15px;
+
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px; padding: 0 40px 60px 40px;
         }
-        .footer-description { color: #555; line-height: 1.7; max-width: 750px; margin: 0 auto 15px auto; }
-        .footer-contact-msg { color: var(--orange-sport); font-weight: bold; margin-top: 10px; }
+
+        .footer-col h3 {
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 30px; font-weight: 600;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #fff; font-size: 14px; text-decoration: none;
+            line-height: 2.2; margin: 0; display: block;
+        }
+
+        .footer-col a:hover { opacity: 0.6; }
+
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto;
+            border-top: 1px solid #333; padding: 25px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .copyright-box { font-size: 13px; display: flex; align-items: center; }
+        .logo-small {
+            border: 1px solid #fff; padding: 2px 6px; margin-right: 12px;
+            font-weight: bold; font-size: 11px;
+        }
+
+        .social-bar { display: flex; gap: 25px; }
+        .social-bar a { color: #fff; text-decoration: none; font-size: 18px; transition: 0.3s; }
+        .social-bar a:hover { opacity: 0.5; }
 
         /* --- MODALE --- */
         .modal {
-            display: none; position: fixed; z-index: 2000;
+            display: none; position: fixed; z-index: 3000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
         }
         .modal-content {
-            background-color: #222; color: white; margin: 10% auto;
-            padding: 30px; width: 90%; max-width: 400px; border-radius: 10px;
-            position: relative; border: 1px solid #444;
+            background-color: #1a1a1a; color: white; margin: 8% auto;
+            padding: 30px; width: 90%; max-width: 400px; border-radius: 12px;
+            position: relative; border: 1px solid #333;
         }
-        .close-btn { position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; }
+        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; }
         #contactForm input, #contactForm textarea {
-            width: 100%; padding: 10px; margin: 10px 0; background: #333;
-            border: 1px solid #555; color: white; border-radius: 5px; box-sizing: border-box;
+            width: 100%; padding: 12px; margin: 10px 0; background: #222;
+            border: 1px solid #444; color: white; border-radius: 6px; box-sizing: border-box;
         }
-        .btn-submit {
-            width: 100%; padding: 12px; background: var(--orange-sport);
-            border: none; color: white; font-weight: bold; cursor: pointer;
-        }
+        .btn-submit { width: 100%; padding: 14px; background: var(--orange-sport); border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 6px; }
 
         /* PUBLICITÉ */
-        .ad-container { margin: 20px 0; width: 100%; text-align: center; overflow: hidden; }
+        .ad-slot { margin: 25px 0; width: 100%; text-align: center; overflow: hidden; }
+
+        @media (max-width: 768px) {
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -161,25 +190,16 @@
         <a onclick="selectMuscle('mollets-dos')">Mollets (Arrière)</a>
     </div>
 
-    <h1 style="margin-top: 80px;">Coaching Anatomique</h1>
-    <button class="toggle-btn" onclick="toggleView()" style="margin-bottom: 20px; padding: 12px 25px; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold;">⇌ Changer de vue (Face/Dos)</button>
+    <h1 style="margin-top: 100px; color: var(--secondary);">Coaching Anatomique</h1>
+    <button onclick="toggleView()" style="margin-bottom: 20px; padding: 12px 25px; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold;">⇌ Changer de vue (Face/Dos)</button>
 
-    <div class="ad-container">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-4914176983390397"
-             data-ad-slot="AUTO"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+    <div class="ad-slot">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4914176983390397" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="main-container">
         <div class="svg-wrapper">
-            
-
-[Image of the major muscle groups of the human body, front and back views]
-
             <svg id="front-view" viewBox="0 0 200 400">
                 <g transform="translate(100, 0)">
                     <circle cx="0" cy="30" r="20" fill="#bdc3c7"/>
@@ -217,29 +237,47 @@
         <div class="info-panel">
             <h2 id="muscle-title">Sélectionnez une zone</h2>
             <div id="exercises-container">
-                <p>Cliquez sur le schéma ou utilisez le menu à gauche.</p>
+                <p>Cliquez sur le schéma pour voir les exercices.</p>
             </div>
             
-            <div class="ad-container" style="margin-top:30px;">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-4914176983390397"
-                     data-ad-slot="AUTO"
-                     data-ad-format="rectangle"></ins>
+            <div class="ad-slot" style="margin-top:30px; border-top: 1px solid #eee; padding-top: 20px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4914176983390397" data-ad-slot="AUTO" data-ad-format="rectangle"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
     </div>
 
     <footer class="site-footer">
-        <div class="footer-date">Créé le 3 janvier 2026</div>
-        <p class="footer-description">
-            <strong>Coach Muscu</strong> est votre guide interactif conçu pour perfectionner votre entraînement. 
-            Explorez l'anatomie humaine de manière simple et découvrez les exercices optimaux pour chaque muscle afin de transformer votre physique avec précision.
-        </p>
-        <p class="footer-contact-msg">
-            N'hésitez pas à me contacter via le bouton <strong>Contact</strong> qui existe déjà pour toute question personnalisée !
-        </p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Le Site</h3>
+                <p><strong>Coach Muscu</strong> est un outil professionnel dédié à l'anatomie fonctionnelle et à la musculation. Notre mission est d'optimiser votre progression via des connaissances précises.</p>
+                <p style="margin-top: 15px; color: var(--primary);">Créé le 3 Janvier 2026</p>
+            </div>
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <a href="#">Accueil</a>
+                <a onclick="openNav()">Explorer les muscles</a>
+                <a href="programme.html">Programmes au poids du corps</a>
+                <a href="javascript:void(0)" onclick="openModal()">Contact direct</a>
+            </div>
+            <div class="footer-col">
+                <h3>Partenaire</h3>
+                <p>Pour un accompagnement sur-mesure ou une question technique, n'hésitez pas à me contacter via le bouton <strong>Contact</strong> en bas de page.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright-box">
+                <span class="logo-small">CM</span> Copyright © 2026 CoachMuscu B.V.®
+            </div>
+            <div class="social-bar">
+                <a href="#">IG</a>
+                <a href="#">FB</a>
+                <a href="#">YT</a>
+                <a href="#">X</a>
+            </div>
+        </div>
     </footer>
 
     <button id="btnContact" class="btn-contact">Me contacter</button>
@@ -247,13 +285,13 @@
     <div id="modalContact" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Contacte ton coach</h2>
+            <h2 style="margin-top: 0;">Contacte ton coach</h2>
             <form id="contactForm" name="contact-muscu" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contact-muscu">
                 <input type="text" name="nom" placeholder="Ton nom" required>
                 <input type="email" name="email" placeholder="Ton email" required>
                 <textarea name="message" placeholder="Ton objectif..." rows="4" required></textarea>
-                <button type="submit" class="btn-submit">ENVOYER</button>
+                <button type="submit" class="btn-submit">ENVOYER LE MESSAGE</button>
             </form>
         </div>
     </div>
@@ -317,7 +355,8 @@
 
         const modal = document.getElementById("modalContact");
         const btn = document.getElementById("btnContact");
-        btn.onclick = function() { modal.style.display = "block"; }
+        btn.onclick = openModal;
+        function openModal() { modal.style.display = "block"; }
         function closeModal() { modal.style.display = "none"; }
         window.onclick = function(event) { if (event.target == modal) closeModal(); }
     </script>
